@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 import Script from 'next/script'
 
@@ -84,7 +84,12 @@ function IndexForm() {
   function submitHandler_google(event) {
 
     event.preventDefault();
-    // google.accounts.id.prompt();
+    google.accounts.id.prompt((notification) => {
+      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+        document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+        google.accounts.id.prompt()
+      }
+    });
 
     return
     // fetch(getBaseUrl + "auth/google_login", {
@@ -165,13 +170,6 @@ function IndexForm() {
     google.accounts.id.initialize({
       client_id: "510894219524-4tg4ciiubm7got26edpggronmanpfg3p.apps.googleusercontent.com",
       callback: handleCallbackResponse
-    });
-
-    google.accounts.id.prompt((notification) => {
-      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-        document.cookie = `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
-        google.accounts.id.prompt()
-      }
     });
 
     // google.accounts.id.renderButton(

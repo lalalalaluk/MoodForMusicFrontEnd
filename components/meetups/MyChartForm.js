@@ -4,7 +4,7 @@ import Head from "next/head";
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 
 ChartJS.register(ArcElement, Tooltip, Legend);

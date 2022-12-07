@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import React from "react";
 import Link from 'next/link';
-import getBaseUrl from "../../pages/const";
+import getBaseUrl from "../../pages/api/const";
 import { useRouter } from "next/router";
 
 {/* # TODO: 信件紀錄的API，要用useState去渲染顯示 */}
