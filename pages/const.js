@@ -3,7 +3,7 @@ const getBaseUrl = () => {
     let url;
     switch(process.env.NODE_ENV) {
       case 'production':
-        url = 'https://stackoverflow.com';
+        url = 'https://b-mood-for-music.ntub.edu.tw/api/';
         break;
       case 'development':
       default:
